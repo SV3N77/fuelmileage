@@ -5,7 +5,9 @@ export default function Header() {
     <header className="bg-blue-300 p-5">
       <nav className="container mx-auto flex flex-col gap-4 text-lg text-white md:flex-row">
         <Link href="/">
-          <h1 className="grow text-3xl font-semibold">Random Stuff</h1>
+          <h1 className="grow text-3xl font-semibold">
+            Fuel Mileage Calulator
+          </h1>
         </Link>
       </nav>
     </header>
