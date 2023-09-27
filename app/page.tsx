@@ -9,22 +9,23 @@ type FuelEconomy = {
 };
 
 export default function Home() {
-  const [result, setResult] = useState<number>();
+  const [result, setResult] = useState<string>();
   const [formData, setFormData] = useState<FuelEconomy>();
+  const [metric, setMetric] = useState<string>();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const travelled = formData!.end - formData!.start;
-    const economy = formData!.fuel / (travelled / 100);
+    const economy = (formData!.fuel / (travelled / 100)).toFixed(2);
     setResult(economy);
   }
 
   return (
-    <main className="container mx-auto mt-10 flex flex-col">
+    <main className="container mx-auto mt-10 flex flex-col gap-4">
+      <div className="font-semibold">
+        Calculate the fuel economy of a vehicle
+      </div>
       <section className="container mx-auto flex flex-col gap-4">
-        <div className="font-semibold">
-          Calculate the fuel economy of a vehicle
-        </div>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-4 items-center"
@@ -50,9 +51,16 @@ export default function Home() {
             formData={formData}
             setFormData={setFormData}
           />
-          <button type="submit">Calculate</button>
+          <button
+            className="bg-slate-400 px-3 py-2 rounded-md text-white"
+            type="submit"
+          >
+            Calculate
+          </button>
         </form>
-        {result && <div>Your fuel economy is {result}</div>}
+        <div className="">
+          {result && <div>Your fuel economy is {result}Km/L</div>}
+        </div>
       </section>
     </main>
   );
