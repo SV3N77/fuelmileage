@@ -25,11 +25,8 @@ export default function Home() {
       <div className="font-semibold">
         Calculate the fuel economy of a vehicle
       </div>
-      <section className="container mx-auto flex flex-col gap-4">
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4 items-center"
-        >
+      <section className="flex flex-col gap-4 py-4 w-2/4 bg-slate-100 mx-auto rounded shadow-md">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-4">
           <CalcInput
             name={"Start"}
             id={"start"}
@@ -47,7 +44,7 @@ export default function Home() {
           <CalcInput
             name={"Fuel"}
             id={"fuel"}
-            metric="L"
+            metric="L "
             formData={formData}
             setFormData={setFormData}
           />
@@ -58,7 +55,7 @@ export default function Home() {
             Calculate
           </button>
         </form>
-        <div className="">
+        <div className="text-center">
           {result && <div>Your fuel economy is {result}Km/L</div>}
         </div>
       </section>
@@ -78,14 +75,14 @@ type CalcInputType = {
 
 function CalcInput({ name, id, metric, formData, setFormData }: CalcInputType) {
   return (
-    <div className="flex justify-between w-1/4">
+    <div className="flex justify-evenly">
       <label
         htmlFor={id}
         className="block text-gray-700 text-sm font-bold px-3 py-2"
       >
         {name}:
       </label>
-      <div className="flex  w-1/2">
+      <div className="flex w-1/3">
         <input
           type="text"
           id={id}
